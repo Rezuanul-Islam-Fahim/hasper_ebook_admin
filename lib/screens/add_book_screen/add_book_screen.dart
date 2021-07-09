@@ -20,6 +20,8 @@ class _AddBookScreenState extends State<AddBookScreen> {
 
   File? _selectedPdf;
   File? _selectedImage;
+  bool? _isImageSelected = true;
+  bool? _isPdfSelected = true;
   Book? book = Book(
     id: null,
     title: null,
@@ -28,7 +30,29 @@ class _AddBookScreenState extends State<AddBookScreen> {
   );
 
   void _uploadBook() {
-    if (_formKey.currentState!.validate()) {
+    if (_selectedImage == null) {
+      setState(() {
+        _isImageSelected = false;
+      });
+    } else {
+      setState(() {
+        _isImageSelected = true;
+      });
+    }
+
+    if (_selectedPdf == null) {
+      setState(() {
+        _isPdfSelected = false;
+      });
+    } else {
+      setState(() {
+        _isPdfSelected = true;
+      });
+    }
+
+    if (_formKey.currentState!.validate() &&
+        _isImageSelected! &&
+        _isPdfSelected!) {
       _formKey.currentState!.save();
       print(book!.id);
       print(book!.title);
@@ -120,7 +144,7 @@ class _AddBookScreenState extends State<AddBookScreen> {
                   },
                 ),
                 SizedBox(height: 15),
-                SelectPdf(handler: _getPdf),
+                SelectPdf(handler: _getPdf, isPdfSelected: _isPdfSelected),
                 SizedBox(height: 15),
                 Padding(
                   padding: const EdgeInsets.only(left: 1),
@@ -129,6 +153,7 @@ class _AddBookScreenState extends State<AddBookScreen> {
                 SizedBox(height: 6),
                 SelectCoverPhoto(
                   handler: _getCoverPhoto,
+                  isImageSelected: _isImageSelected,
                 ),
                 SizedBox(height: 15),
                 Padding(
