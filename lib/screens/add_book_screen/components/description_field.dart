@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 
 class DescriptionField extends StatelessWidget {
+  const DescriptionField(this.handler);
+
+  final Function? handler;
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -15,7 +19,7 @@ class DescriptionField extends StatelessWidget {
           decoration: InputDecoration(
             hintText: 'Description',
             hintStyle: TextStyle(fontSize: 14),
-            contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+            contentPadding: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
             border: OutlineInputBorder(
               borderSide: BorderSide(color: Colors.grey[400]!),
               borderRadius: BorderRadius.circular(6),
@@ -31,6 +35,16 @@ class DescriptionField extends StatelessWidget {
           ),
           minLines: 10,
           maxLines: 10,
+          onSaved: (String? value) => handler!(value),
+          validator: (String? value) {
+            if (value!.isEmpty) {
+              return 'Description must not be empty';
+            } else if (value.length < 50) {
+              return 'Description should be at least 50 characters';
+            }
+
+            return null;
+          },
         ),
       ],
     );
