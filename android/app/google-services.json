@@ -7,9 +7,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:121073413143:android:710102599184ea832f8052",
+        "mobilesdk_app_id": "1:121073413143:android:4f60aae18f988efb2f8052",
         "android_client_info": {
-          "package_name": "com.example.hasper_ebook_admin"
+          "package_name": "com.rezuanulfahim.hasper_ebook_admin"
         }
       },
       "oauth_client": [
