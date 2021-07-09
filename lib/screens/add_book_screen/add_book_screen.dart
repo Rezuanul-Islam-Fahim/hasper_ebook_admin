@@ -19,6 +19,7 @@ class _AddBookScreenState extends State<AddBookScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   File? _selectedPdf;
+  File? _selectedImage;
   Book? book = Book(
     id: null,
     title: null,
@@ -26,7 +27,7 @@ class _AddBookScreenState extends State<AddBookScreen> {
     description: null,
   );
 
-  void uploadBook() {
+  void _uploadBook() {
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
       print(book!.id);
@@ -36,12 +37,17 @@ class _AddBookScreenState extends State<AddBookScreen> {
     }
   }
 
-  void getPdf(File pdf) {
+  void _getPdf(File pdf) {
     _selectedPdf = pdf;
-    print(pdf.path);
+    print(_selectedPdf!.path);
   }
 
-  void getDescription(String? value) {
+  void _getCoverPhoto(File image) {
+    _selectedImage = image;
+    print(_selectedImage!.path);
+  }
+
+  void _getDescription(String? value) {
     book = Book(
       id: book!.id,
       title: book!.title,
@@ -78,7 +84,7 @@ class _AddBookScreenState extends State<AddBookScreen> {
               'Upload',
               style: TextStyle(color: Colors.black87),
             ),
-            onPressed: uploadBook,
+            onPressed: _uploadBook,
           ),
         ],
       ),
@@ -114,14 +120,16 @@ class _AddBookScreenState extends State<AddBookScreen> {
                   },
                 ),
                 SizedBox(height: 15),
-                SelectPdf(handler: getPdf),
+                SelectPdf(handler: _getPdf),
                 SizedBox(height: 15),
                 Padding(
                   padding: const EdgeInsets.only(left: 1),
                   child: Text('Enter Book Cover Photo'),
                 ),
                 SizedBox(height: 6),
-                SelectCoverPhoto(),
+                SelectCoverPhoto(
+                  handler: _getCoverPhoto,
+                ),
                 SizedBox(height: 15),
                 Padding(
                   padding: const EdgeInsets.only(left: 1),
@@ -152,7 +160,7 @@ class _AddBookScreenState extends State<AddBookScreen> {
                   },
                 ),
                 SizedBox(height: 15),
-                DescriptionField(getDescription),
+                DescriptionField(_getDescription),
               ],
             ),
           ),
