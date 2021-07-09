@@ -1,8 +1,12 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:hasper_ebook_admin/models/books.dart';
 
 import 'components/description_field.dart';
 import 'components/general_field_decoration.dart';
+import 'components/select_cover_photo.dart';
+import 'components/select_pdf.dart';
 
 class AddBookScreen extends StatefulWidget {
   static const String routeName = '/add-book';
@@ -13,7 +17,9 @@ class AddBookScreen extends StatefulWidget {
 
 class _AddBookScreenState extends State<AddBookScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  Book book = Book(
+
+  File? _selectedPdf;
+  Book? book = Book(
     id: null,
     title: null,
     pages: null,
@@ -23,18 +29,23 @@ class _AddBookScreenState extends State<AddBookScreen> {
   void uploadBook() {
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
-      print(book.id);
-      print(book.title);
-      print(book.pages);
-      print(book.description);
+      print(book!.id);
+      print(book!.title);
+      print(book!.pages);
+      print(book!.description);
     }
+  }
+
+  void getPdf(File pdf) {
+    _selectedPdf = pdf;
+    print(pdf.path);
   }
 
   void getDescription(String? value) {
     book = Book(
-      id: book.id,
-      title: book.title,
-      pages: book.pages,
+      id: book!.id,
+      title: book!.title,
+      pages: book!.pages,
       description: value,
     );
   }
@@ -88,10 +99,10 @@ class _AddBookScreenState extends State<AddBookScreen> {
                   decoration: generalFieldDecoration('Book Title'),
                   onSaved: (String? value) {
                     book = Book(
-                      id: book.id,
+                      id: book!.id,
                       title: value,
-                      pages: book.pages,
-                      description: book.description,
+                      pages: book!.pages,
+                      description: book!.description,
                     );
                   },
                   validator: (String? value) {
@@ -103,10 +114,14 @@ class _AddBookScreenState extends State<AddBookScreen> {
                   },
                 ),
                 SizedBox(height: 15),
-                ElevatedButton(
-                  child: Text('Select PDF'),
-                  onPressed: () {},
+                SelectPdf(handler: getPdf),
+                SizedBox(height: 15),
+                Padding(
+                  padding: const EdgeInsets.only(left: 1),
+                  child: Text('Enter Book Cover Photo'),
                 ),
+                SizedBox(height: 6),
+                SelectCoverPhoto(),
                 SizedBox(height: 15),
                 Padding(
                   padding: const EdgeInsets.only(left: 1),
@@ -118,10 +133,10 @@ class _AddBookScreenState extends State<AddBookScreen> {
                   keyboardType: TextInputType.number,
                   onSaved: (String? value) {
                     book = Book(
-                      id: book.id,
-                      title: book.title,
+                      id: book!.id,
+                      title: book!.title,
                       pages: int.parse(value!),
-                      description: book.description,
+                      description: book!.description,
                     );
                   },
                   validator: (String? value) {
