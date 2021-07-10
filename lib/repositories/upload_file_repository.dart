@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:firebase_storage/firebase_storage.dart';
 
-class UploadRepository {
+class UploadFileRepository {
   static Future<String?>? uploadGetUrl({
     String? fileType,
     File? file,

@@ -2,7 +2,8 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:hasper_ebook_admin/models/book.dart';
-import 'package:hasper_ebook_admin/repositories/upload_repository.dart';
+import 'package:hasper_ebook_admin/repositories/db_repository.dart';
+import 'package:hasper_ebook_admin/repositories/upload_file_repository.dart';
 import 'package:path/path.dart' as path;
 
 import 'components/description_field.dart';
@@ -19,7 +20,6 @@ class AddBookScreen extends StatefulWidget {
 
 class _AddBookScreenState extends State<AddBookScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-
   File? _selectedPdf;
   File? _selectedImage;
   bool? _isImageSelected = true;
@@ -40,7 +40,6 @@ class _AddBookScreenState extends State<AddBookScreen> {
       } else {
         _isImageSelected = true;
       }
-
       if (_selectedPdf == null) {
         _isPdfSelected = false;
       } else {
@@ -52,27 +51,42 @@ class _AddBookScreenState extends State<AddBookScreen> {
         _isImageSelected! &&
         _isPdfSelected!) {
       _formKey.currentState!.save();
+      try {
+        String? pdfURL = await UploadFileRepository.uploadGetUrl(
+          fileType: 'pdf',
+          file: _selectedPdf,
+          fileExtension: path.extension(_selectedPdf!.path),
+        );
+        String? imgURL = await UploadFileRepository.uploadGetUrl(
+          fileType: 'image',
+          file: _selectedImage,
+          fileExtension: path.extension(_selectedImage!.path),
+        );
+        String? bookId = await DBRepository.storeBookGetId(
+          Book(
+            id: book!.id,
+            title: book!.title,
+            pdfUrl: pdfURL,
+            coverPhotoUrl: imgURL,
+            pages: book!.pages,
+            description: book!.description,
+          ),
+        );
+      } catch (_) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('An Error Occurred')),
+        );
+      }
 
-      String? pdfURL = await UploadRepository.uploadGetUrl(
-        fileType: 'pdf',
-        file: _selectedPdf,
-        fileExtension: path.extension(_selectedPdf!.path),
-      );
-      
-      String? imgURL = await UploadRepository.uploadGetUrl(
-        fileType: 'image',
-        file: _selectedImage
-        fileExtension: path.extension(_selectedImage!.path),
-      );
-
-      
-
-      print(book!.id);
-      print(book!.title);
-      print(pdfURL);
-      print(imgURL);
-      print(book!.pages);
-      print(book!.description);
+      // book = Book(
+      //   if
+      // );
+      // print(bookId);
+      // print(book!.title);
+      // print(pdfURL);
+      // print(imgURL);
+      // print(book!.pages);
+      // print(book!.description);
     }
   }
 
