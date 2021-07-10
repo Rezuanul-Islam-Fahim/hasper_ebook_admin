@@ -46,7 +46,12 @@ class _SelectPdfState extends State<SelectPdf> {
               onPressed: _selectPdf,
             ),
             SizedBox(width: 20),
-            Text(imageName != null ? imageName! : 'No Pdf Selected'),
+            Expanded(
+              child: Text(
+                imageName != null ? imageName! : 'No Pdf Selected',
+                overflow: TextOverflow.ellipsis,
+              ),
+            ),
           ],
         ),
         if (!widget.isPdfSelected!)

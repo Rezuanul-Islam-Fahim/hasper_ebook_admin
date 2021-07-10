@@ -8,6 +8,7 @@ class Book {
     @required this.coverPhotoUrl,
     @required this.pages,
     @required this.description,
+    @required this.dateTime,
   });
 
   final String? id;
@@ -16,4 +17,28 @@ class Book {
   final String? coverPhotoUrl;
   final int? pages;
   final String? description;
+  final DateTime? dateTime;
+
+  factory Book.fromMap(Map<String, dynamic> map) {
+    return Book(
+      id: map['id'],
+      title: map['title'],
+      pdfUrl: map['pdfUrl'],
+      coverPhotoUrl: map['coverPhotoUrl'],
+      pages: map['pages'],
+      description: map['description'],
+      dateTime: map['dateTime'],
+    );
+  }
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'title': title,
+      'pdfUrl': pdfUrl,
+      'coverPhotoUrl': coverPhotoUrl,
+      'pages': pages,
+      'description': description,
+      'dateTime': dateTime!.toIso8601String(),
+    };
+  }
 }
