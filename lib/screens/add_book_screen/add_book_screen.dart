@@ -1,7 +1,9 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:hasper_ebook_admin/models/books.dart';
+import 'package:hasper_ebook_admin/models/book.dart';
+import 'package:hasper_ebook_admin/repositories/upload_repository.dart';
+import 'package:path/path.dart' as path;
 
 import 'components/description_field.dart';
 import 'components/general_field_decoration.dart';
@@ -25,37 +27,50 @@ class _AddBookScreenState extends State<AddBookScreen> {
   Book? book = Book(
     id: null,
     title: null,
+    pdfUrl: null,
+    coverPhotoUrl: null,
     pages: null,
     description: null,
   );
 
-  void _uploadBook() {
-    if (_selectedImage == null) {
-      setState(() {
+  Future<void> _uploadBook() async {
+    setState(() {
+      if (_selectedImage == null) {
         _isImageSelected = false;
-      });
-    } else {
-      setState(() {
+      } else {
         _isImageSelected = true;
-      });
-    }
+      }
 
-    if (_selectedPdf == null) {
-      setState(() {
+      if (_selectedPdf == null) {
         _isPdfSelected = false;
-      });
-    } else {
-      setState(() {
+      } else {
         _isPdfSelected = true;
-      });
-    }
+      }
+    });
 
     if (_formKey.currentState!.validate() &&
         _isImageSelected! &&
         _isPdfSelected!) {
       _formKey.currentState!.save();
+
+      String? pdfURL = await UploadRepository.uploadGetUrl(
+        fileType: 'pdf',
+        file: _selectedPdf,
+        fileExtension: path.extension(_selectedPdf!.path),
+      );
+      
+      String? imgURL = await UploadRepository.uploadGetUrl(
+        fileType: 'image',
+        file: _selectedImage
+        fileExtension: path.extension(_selectedImage!.path),
+      );
+
+      
+
       print(book!.id);
       print(book!.title);
+      print(pdfURL);
+      print(imgURL);
       print(book!.pages);
       print(book!.description);
     }
@@ -75,6 +90,8 @@ class _AddBookScreenState extends State<AddBookScreen> {
     book = Book(
       id: book!.id,
       title: book!.title,
+      pdfUrl: book!.pdfUrl,
+      coverPhotoUrl: book!.coverPhotoUrl,
       pages: book!.pages,
       description: value,
     );
@@ -131,6 +148,8 @@ class _AddBookScreenState extends State<AddBookScreen> {
                     book = Book(
                       id: book!.id,
                       title: value,
+                      pdfUrl: book!.pdfUrl,
+                      coverPhotoUrl: book!.coverPhotoUrl,
                       pages: book!.pages,
                       description: book!.description,
                     );
@@ -168,6 +187,8 @@ class _AddBookScreenState extends State<AddBookScreen> {
                     book = Book(
                       id: book!.id,
                       title: book!.title,
+                      pdfUrl: book!.pdfUrl,
+                      coverPhotoUrl: book!.coverPhotoUrl,
                       pages: int.parse(value!),
                       description: book!.description,
                     );
@@ -186,6 +207,7 @@ class _AddBookScreenState extends State<AddBookScreen> {
                 ),
                 SizedBox(height: 15),
                 DescriptionField(_getDescription),
+                SizedBox(height: 20),
               ],
             ),
           ),
