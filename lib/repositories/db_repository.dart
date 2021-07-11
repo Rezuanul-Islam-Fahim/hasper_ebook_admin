@@ -77,4 +77,21 @@ class DBRepository {
 
     return _filteredBooks;
   }
+
+  static Future<Book?>? findById(String? id) async {
+    FirebaseFirestore _fireStore = FirebaseFirestore.instance;
+    DocumentReference _reference = _fireStore.collection('books').doc(id);
+    DocumentSnapshot _snapshot = await _reference.get();
+
+    return Book(
+      id: _reference.id,
+      title: _snapshot.get('title'),
+      coverPhotoUrl: _snapshot.get('coverPhotoUrl'),
+      pdfUrl: _snapshot.get('pdfUrl'),
+      language: _snapshot.get('language'),
+      pages: _snapshot.get('pages'),
+      description: _snapshot.get('description'),
+      dateTime: DateTime.parse(_snapshot.get('dateTime')),
+    );
+  }
 }

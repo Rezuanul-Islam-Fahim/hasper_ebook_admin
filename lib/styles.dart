@@ -6,3 +6,11 @@ TextStyle errorTextStyle(BuildContext context) {
     color: Theme.of(context).errorColor,
   );
 }
+
+TextStyle dataPanelTitle() {
+  return TextStyle(color: Colors.white, fontSize: 15);
+}
+
+TextStyle dataPanelValue() {
+  return TextStyle(color: Colors.white60, fontSize: 12);
+}

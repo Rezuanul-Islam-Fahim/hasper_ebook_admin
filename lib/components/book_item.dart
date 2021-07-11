@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hasper_ebook_admin/models/book.dart';
+import 'package:hasper_ebook_admin/screens/book_details_screen/book_details_screen.dart';
 
 class DefaultBookItem extends StatelessWidget {
   const DefaultBookItem(this.book);
@@ -9,7 +10,10 @@ class DefaultBookItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: () => Navigator.of(context).pushNamed(
+        BookDetailsScreen.routeName,
+        arguments: book!.id!,
+      ),
       borderRadius: BorderRadius.circular(25),
       child: Column(
         children: [

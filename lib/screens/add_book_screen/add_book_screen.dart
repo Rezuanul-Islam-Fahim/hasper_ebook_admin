@@ -99,8 +99,8 @@ class _AddBookScreenState extends State<AddBookScreen> {
           dateTime: book!.dateTime,
         );
 
-        Provider.of<Books>(context, listen: false).addBookRecent(book);
-        Provider.of<Books>(context, listen: false).addBookLibrary(book);
+        Provider.of<Books>(context, listen: false).addBookRecent(book!);
+        Provider.of<Books>(context, listen: false).addBookLibrary(book!);
 
         setState(() {
           _isLoading = false;

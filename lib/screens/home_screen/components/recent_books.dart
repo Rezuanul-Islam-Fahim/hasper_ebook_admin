@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hasper_ebook_admin/models/book.dart';
 import 'package:hasper_ebook_admin/providers/books_provider.dart';
+import 'package:hasper_ebook_admin/screens/book_details_screen/book_details_screen.dart';
 import 'package:provider/provider.dart';
 
 class RecentBooks extends StatelessWidget {
@@ -29,7 +30,10 @@ class BookItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: () => Navigator.of(context).pushNamed(
+        BookDetailsScreen.routeName,
+        arguments: book!.id,
+      ),
       borderRadius: BorderRadius.circular(25),
       child: SizedBox(
         width: 150,

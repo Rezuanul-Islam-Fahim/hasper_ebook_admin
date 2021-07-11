@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 
 class Book {
-  const Book({
+  Book({
     @required this.id,
     @required this.title,
     @required this.pdfUrl,

@@ -43,4 +43,8 @@ class Books with ChangeNotifier {
     _libraryBooks = _loadedBooks;
     notifyListeners();
   }
+
+  Future<Book?>? fetchById(String id) async {
+    return DBRepository.findById(id);
+  }
 }
