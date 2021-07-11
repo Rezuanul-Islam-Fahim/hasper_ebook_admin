@@ -86,17 +86,18 @@ class _AddBookScreenState extends State<AddBookScreen> {
           ),
         );
 
-        Provider.of<Books>(context, listen: false).addBookRecent(
-          Book(
-            id: bookId,
-            title: book!.title,
-            pdfUrl: pdfURL,
-            coverPhotoUrl: coverPhotoUrl,
-            pages: book!.pages,
-            description: book!.description,
-            dateTime: book!.dateTime,
-          ),
+        book = Book(
+          id: bookId,
+          title: book!.title,
+          pdfUrl: pdfURL,
+          coverPhotoUrl: coverPhotoUrl,
+          pages: book!.pages,
+          description: book!.description,
+          dateTime: book!.dateTime,
         );
+
+        Provider.of<Books>(context, listen: false).addBookRecent(book);
+        Provider.of<Books>(context, listen: false).addBookLibrary(book);
 
         setState(() {
           _isLoading = false;

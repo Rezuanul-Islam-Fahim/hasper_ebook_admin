@@ -25,6 +25,11 @@ class Books with ChangeNotifier {
     notifyListeners();
   }
 
+  void addBookLibrary(Book? book) {
+    _libraryBooks!.add(book);
+    notifyListeners();
+  }
+
   Future<void> loadRecentBooks() async {
     List<Book>? _loadedBooks = await DBRepository.fetchBooks(
       orderBy: 'dateTime',
