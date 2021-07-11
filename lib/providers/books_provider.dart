@@ -3,13 +3,8 @@ import 'package:hasper_ebook_admin/models/book.dart';
 import 'package:hasper_ebook_admin/repositories/db_repository.dart';
 
 class Books with ChangeNotifier {
-  List<Book?>? _allBook = [];
   List<Book?>? _recentBooks = [];
   List<Book?>? _libraryBooks = [];
-
-  List<Book?>? get allBook {
-    return [..._allBook!];
-  }
 
   List<Book?>? get recentBooks {
     return [..._recentBooks!];
@@ -28,6 +23,7 @@ class Books with ChangeNotifier {
   }
 
   void addBookLibrary(Book? book) {
+    if (_libraryBooks!.length == 10) return;
     _libraryBooks!.add(book);
     notifyListeners();
   }

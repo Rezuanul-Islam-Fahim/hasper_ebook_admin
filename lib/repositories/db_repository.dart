@@ -45,4 +45,34 @@ class DBRepository {
 
     return _recentBooks;
   }
+
+  static Future<List<Book>> fetchBooksFromRange({
+    int? offset,
+    int? limit,
+  }) async {
+    FirebaseFirestore _fireStore = FirebaseFirestore.instance;
+    QuerySnapshot<Map<String, dynamic>>? _querySnapshot =
+        await _fireStore.collection('books').orderBy('title').get();
+    List<QueryDocumentSnapshot> _loadedItems = _querySnapshot.docs;
+    List<Book>? _filteredBooks = [];
+    int _lastIndex = offset! + limit! > _loadedItems.length
+        ? _loadedItems.length
+        : offset + limit;
+
+    for (int i = offset; i < _lastIndex; i++) {
+      _filteredBooks.add(
+        Book(
+          id: _loadedItems[i].id,
+          title: _loadedItems[i].get('title'),
+          coverPhotoUrl: _loadedItems[i].get('coverPhotoUrl'),
+          pdfUrl: _loadedItems[i].get('pdfUrl'),
+          pages: _loadedItems[i].get('pages'),
+          description: _loadedItems[i].get('description'),
+          dateTime: DateTime.parse(_loadedItems[i].get('dateTime')),
+        ),
+      );
+    }
+
+    return _filteredBooks;
+  }
 }
