@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hasper_ebook_admin/components/book_item.dart';
 import 'package:hasper_ebook_admin/models/book.dart';
 import 'package:hasper_ebook_admin/repositories/db_repository.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
@@ -49,14 +50,18 @@ class _AllBookScreenBodyState extends State<AllBookScreenBody> {
 
   @override
   Widget build(BuildContext context) {
-    return PagedListView(
+    return PagedGridView(
       pagingController: _pagingController,
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+        crossAxisSpacing: 15,
+        mainAxisSpacing: 10,
+        mainAxisExtent: 240,
+      ),
+      padding: EdgeInsets.fromLTRB(15, 5, 15, 15),
       builderDelegate: PagedChildBuilderDelegate<Book>(
         itemBuilder: (ctx, book, index) {
-          return Container(
-            height: 300,
-            child: Text(book.title!),
-          );
+          return DefaultBookItem(book);
         },
       ),
     );
