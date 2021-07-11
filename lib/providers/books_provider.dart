@@ -21,7 +21,9 @@ class Books with ChangeNotifier {
 
   void addBookRecent(Book? book) {
     _recentBooks!.insert(0, book);
-    _recentBooks!.removeLast();
+    if (_recentBooks!.length > 6) {
+      _recentBooks!.removeLast();
+    }
     notifyListeners();
   }
 

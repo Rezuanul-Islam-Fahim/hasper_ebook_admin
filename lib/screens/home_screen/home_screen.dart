@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hasper_ebook_admin/providers/books_provider.dart';
+import 'package:hasper_ebook_admin/screens/all_book_screen/all_book_screen.dart';
 import 'package:provider/provider.dart';
 
 import '../../components/drawer.dart';
@@ -78,12 +79,24 @@ class _HomeScreenState extends State<HomeScreen> {
                   SizedBox(height: 20),
                   RecentBooks(),
                   SizedBox(height: 25),
-                  Padding(
-                    padding: EdgeInsets.only(left: 20),
-                    child: Text(
-                      'Library',
-                      style: Theme.of(context).textTheme.headline5,
-                    ),
+                  Row(
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.only(left: 20),
+                        child: Text(
+                          'Library',
+                          style: Theme.of(context).textTheme.headline5,
+                        ),
+                      ),
+                      Spacer(),
+                      TextButton(
+                        child: Text('See All Books'),
+                        onPressed: () => Navigator.of(context).pushNamed(
+                          AllBookScreen.routeName,
+                        ),
+                      ),
+                      SizedBox(width: 10),
+                    ],
                   ),
                   Library(),
                 ],
