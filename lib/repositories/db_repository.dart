@@ -12,14 +12,25 @@ class DBRepository {
     return _reference.id;
   }
 
-  static Future<List<Book>?> getRecentBooks() async {
+  static Future<List<Book>?> fetchBooks({
+    String? orderBy,
+    bool? desc,
+    int? limit,
+  }) async {
     FirebaseFirestore _fireStore = FirebaseFirestore.instance;
-    QuerySnapshot<Map<String, dynamic>> _querySnapshot = await _fireStore
-        .collection('books')
-        .orderBy('dateTime', descending: true)
-        .limit(6)
-        .get();
-    List<QueryDocumentSnapshot> _docs = _querySnapshot.docs;
+    QuerySnapshot<Map<String, dynamic>>? _querySnapshot;
+
+    if (orderBy == null && limit != null) {
+      _querySnapshot = await _fireStore.collection('books').limit(limit).get();
+    } else if (orderBy != null && desc != null && limit != null) {
+      _querySnapshot = await _fireStore
+          .collection('books')
+          .orderBy(orderBy, descending: desc)
+          .limit(limit)
+          .get();
+    }
+
+    List<QueryDocumentSnapshot> _docs = _querySnapshot!.docs;
     List<Book> _recentBooks = _docs.map((QueryDocumentSnapshot doc) {
       return Book(
         id: doc.id,

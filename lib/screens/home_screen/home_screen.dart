@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 
 import '../../components/drawer.dart';
 import '../../screens/add_book_screen/add_book_screen.dart';
+import 'components/library.dart';
 import 'components/recent_books.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -16,14 +17,16 @@ class _HomeScreenState extends State<HomeScreen> {
   bool? _isinit = false;
   bool? _isLoading = true;
 
+  Future<void> loadBooks() async {
+    await Provider.of<Books>(context, listen: false).loadRecentBooks();
+    await Provider.of<Books>(context, listen: false).loadLibraryBooks();
+    setState(() => _isLoading = false);
+  }
+
   @override
   void didChangeDependencies() {
     if (!_isinit!) {
-      Provider.of<Books>(context, listen: false)
-          .loadRecentBooks()
-          .then((_) => setState(() {
-                _isLoading = false;
-              }));
+      loadBooks();
       _isinit = true;
     }
     super.didChangeDependencies();
@@ -74,6 +77,15 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   SizedBox(height: 20),
                   RecentBooks(),
+                  SizedBox(height: 25),
+                  Padding(
+                    padding: EdgeInsets.only(left: 20),
+                    child: Text(
+                      'Library',
+                      style: Theme.of(context).textTheme.headline5,
+                    ),
+                  ),
+                  Library(),
                 ],
               ),
             ),

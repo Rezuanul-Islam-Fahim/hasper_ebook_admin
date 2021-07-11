@@ -9,7 +9,7 @@ class RecentBooks extends StatelessWidget {
     final List<Book?>? _recentBooks = Provider.of<Books>(context).recentBooks;
 
     return Container(
-      height: 245,
+      height: 230,
       child: ListView(
         padding: const EdgeInsets.symmetric(horizontal: 15),
         scrollDirection: Axis.horizontal,
@@ -32,14 +32,14 @@ class BookItem extends StatelessWidget {
       onTap: () {},
       borderRadius: BorderRadius.circular(25),
       child: SizedBox(
-        width: 180,
+        width: 150,
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 5),
           child: Column(
             children: [
               Container(
-                width: 170,
-                height: 180,
+                width: 140,
+                height: 165,
                 decoration: BoxDecoration(
                   color: Color(0xFFd8e0e7),
                   borderRadius: BorderRadius.circular(25),
@@ -47,8 +47,8 @@ class BookItem extends StatelessWidget {
                 child: Align(
                   alignment: Alignment.center,
                   child: Container(
-                    width: 110,
-                    height: 145,
+                    width: 95,
+                    height: 130,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       boxShadow: [
@@ -71,7 +71,8 @@ class BookItem extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 12),
-              Expanded(
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 3),
                 child: Text(
                   book!.title!,
                   style: Theme.of(context).textTheme.headline6!,
