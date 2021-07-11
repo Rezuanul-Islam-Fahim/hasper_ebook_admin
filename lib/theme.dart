@@ -9,7 +9,11 @@ ThemeData theme() {
       iconTheme: IconThemeData(color: Colors.black87),
     ),
     textTheme: ThemeData.light().textTheme.copyWith(
-          headline6: TextStyle(fontSize: 18),
+          headline5: TextStyle(
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+          ),
+          headline6: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
           bodyText1: TextStyle(
             fontSize: 15,
             fontWeight: FontWeight.bold,

@@ -66,13 +66,13 @@ class _HomeScreenState extends State<HomeScreen> {
                 children: [
                   SizedBox(height: 15),
                   Padding(
-                    padding: EdgeInsets.only(left: 15),
+                    padding: EdgeInsets.only(left: 20),
                     child: Text(
                       'Recently Uploaded',
-                      style: Theme.of(context).textTheme.headline6,
+                      style: Theme.of(context).textTheme.headline5,
                     ),
                   ),
-                  SizedBox(height: 15),
+                  SizedBox(height: 20),
                   RecentBooks(),
                 ],
               ),
