@@ -6,6 +6,7 @@ class Book {
     @required this.title,
     @required this.pdfUrl,
     @required this.coverPhotoUrl,
+    @required this.language,
     @required this.pages,
     @required this.description,
     @required this.dateTime,
@@ -15,6 +16,7 @@ class Book {
   final String? title;
   final String? pdfUrl;
   final String? coverPhotoUrl;
+  final String? language;
   final int? pages;
   final String? description;
   final DateTime? dateTime;
@@ -25,6 +27,7 @@ class Book {
       title: map['title'],
       pdfUrl: map['pdfUrl'],
       coverPhotoUrl: map['coverPhotoUrl'],
+      language: map['language'],
       pages: map['pages'],
       description: map['description'],
       dateTime: map['dateTime'],
@@ -36,6 +39,7 @@ class Book {
       'title': title,
       'pdfUrl': pdfUrl,
       'coverPhotoUrl': coverPhotoUrl,
+      'language': language,
       'pages': pages,
       'description': description,
       'dateTime': dateTime!.toIso8601String(),

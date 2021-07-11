@@ -34,6 +34,7 @@ class _AddBookScreenState extends State<AddBookScreen> {
     title: null,
     pdfUrl: null,
     coverPhotoUrl: null,
+    language: null,
     pages: null,
     description: null,
     dateTime: DateTime.now(),
@@ -80,6 +81,7 @@ class _AddBookScreenState extends State<AddBookScreen> {
             title: book!.title,
             pdfUrl: pdfURL,
             coverPhotoUrl: coverPhotoUrl,
+            language: book!.language,
             pages: book!.pages,
             description: book!.description,
             dateTime: book!.dateTime,
@@ -91,6 +93,7 @@ class _AddBookScreenState extends State<AddBookScreen> {
           title: book!.title,
           pdfUrl: pdfURL,
           coverPhotoUrl: coverPhotoUrl,
+          language: book!.language,
           pages: book!.pages,
           description: book!.description,
           dateTime: book!.dateTime,
@@ -145,6 +148,7 @@ class _AddBookScreenState extends State<AddBookScreen> {
       title: book!.title,
       pdfUrl: book!.pdfUrl,
       coverPhotoUrl: book!.coverPhotoUrl,
+      language: book!.language,
       pages: book!.pages,
       description: value,
       dateTime: book!.dateTime,
@@ -206,6 +210,7 @@ class _AddBookScreenState extends State<AddBookScreen> {
                           title: value,
                           pdfUrl: book!.pdfUrl,
                           coverPhotoUrl: book!.coverPhotoUrl,
+                          language: book!.language,
                           pages: book!.pages,
                           description: book!.description,
                           dateTime: book!.dateTime,
@@ -246,6 +251,7 @@ class _AddBookScreenState extends State<AddBookScreen> {
                           title: book!.title,
                           pdfUrl: book!.pdfUrl,
                           coverPhotoUrl: book!.coverPhotoUrl,
+                          language: book!.language,
                           pages: int.parse(value!),
                           description: book!.description,
                           dateTime: book!.dateTime,
@@ -258,6 +264,34 @@ class _AddBookScreenState extends State<AddBookScreen> {
                           return 'Please enter a valid number';
                         } else if (int.parse(value) <= 0) {
                           return 'Please enter a number greater than zero(0)';
+                        }
+
+                        return null;
+                      },
+                    ),
+                    SizedBox(height: 15),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 1),
+                      child: Text('Enter Book Language'),
+                    ),
+                    SizedBox(height: 6),
+                    TextFormField(
+                      decoration: generalFieldDecoration('Language'),
+                      onSaved: (String? value) {
+                        book = Book(
+                          id: book!.id,
+                          title: book!.title,
+                          pdfUrl: book!.pdfUrl,
+                          coverPhotoUrl: book!.coverPhotoUrl,
+                          language: value,
+                          pages: book!.pages,
+                          description: book!.description,
+                          dateTime: book!.dateTime,
+                        );
+                      },
+                      validator: (String? value) {
+                        if (value!.isEmpty) {
+                          return 'Book language must not be empty';
                         }
 
                         return null;
