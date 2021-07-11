@@ -58,7 +58,7 @@ class _AllBookScreenBodyState extends State<AllBookScreenBody> {
         mainAxisSpacing: 10,
         mainAxisExtent: 240,
       ),
-      padding: EdgeInsets.fromLTRB(15, 5, 15, 15),
+      padding: EdgeInsets.all(15),
       builderDelegate: PagedChildBuilderDelegate<Book>(
         itemBuilder: (ctx, book, index) {
           return DefaultBookItem(book);

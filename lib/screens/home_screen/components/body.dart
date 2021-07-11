@@ -38,7 +38,7 @@ class HomeScreenBodyState extends State<HomeScreenBody> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(height: 15),
+                SizedBox(height: 25),
                 Padding(
                   padding: EdgeInsets.only(left: 20),
                   child: Text(

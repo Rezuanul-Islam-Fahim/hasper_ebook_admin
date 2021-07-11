@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hasper_ebook_admin/screens/add_book_screen/components/body.dart';
+import 'package:hasper_ebook_admin/screens/all_book_screen/components/body.dart';
 
 class AllBookScreen extends StatelessWidget {
   static const String routeName = '/all-book';
@@ -9,10 +9,7 @@ class AllBookScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text(
-          'All Books',
-          style: Theme.of(context).textTheme.headline5,
-        ),
+        title: Text('All Books'),
       ),
       body: AllBookScreenBody(),
     );

@@ -24,8 +24,6 @@ class BookDetailsScreen extends StatelessWidget {
           splashRadius: 22,
         ),
         centerTitle: true,
-        backgroundColor: Color(0xFF1d212b),
-        brightness: Brightness.dark,
       ),
       body: FutureBuilder(
         future: Provider.of<Books>(context).fetchById(id),

@@ -4,9 +4,9 @@ ThemeData theme() {
   return ThemeData(
     scaffoldBackgroundColor: Colors.white,
     appBarTheme: AppBarTheme(
-      backgroundColor: Colors.white,
+      backgroundColor: Color(0xFF1d212b),
       elevation: 0,
-      iconTheme: IconThemeData(color: Colors.black87),
+      brightness: Brightness.dark,
     ),
     textTheme: ThemeData.light().textTheme.copyWith(
           headline5: TextStyle(

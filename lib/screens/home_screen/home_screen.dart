@@ -13,10 +13,8 @@ class HomeScreen extends StatelessWidget {
         leading: Builder(
           builder: (BuildContext context) {
             return IconButton(
-              icon: SvgPicture.asset(
-                'assets/icons/menu.svg',
-                color: Colors.black87,
-              ),
+              icon: SvgPicture.asset('assets/icons/menu.svg',
+                  color: Colors.white),
               splashRadius: 22,
               onPressed: () => Scaffold.of(context).openDrawer(),
             );
@@ -26,7 +24,7 @@ class HomeScreen extends StatelessWidget {
           TextButton(
             child: Text(
               'Upload Book',
-              style: TextStyle(color: Colors.black87),
+              style: TextStyle(color: Colors.white, fontSize: 16),
             ),
             onPressed: () => Navigator.of(context).pushNamed(
               AddBookScreen.routeName,

@@ -122,13 +122,6 @@ class _AddBookScreenState extends State<AddBookScreen> {
           defaultSnackbar('An Error Occurred')!,
         );
       }
-
-      // print(bookId);
-      // print(book!.title);
-      // print(pdfURL);
-      // print(imgURL);
-      // print(book!.pages);
-      // print(book!.description);
     }
   }
 
@@ -159,29 +152,18 @@ class _AddBookScreenState extends State<AddBookScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        elevation: 0.5,
-        leading: Builder(
-          builder: (BuildContext context) {
-            return IconButton(
-              icon: Icon(Icons.arrow_back_rounded),
-              splashRadius: 22,
-              onPressed: () => Navigator.of(context).pop(),
-            );
-          },
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back_rounded),
+          splashRadius: 22,
+          onPressed: () => Navigator.of(context).pop(),
         ),
-        title: Text(
-          'Add Book',
-          style: TextStyle(
-            color: Colors.black87,
-            fontSize: 18,
-          ),
-        ),
+        title: Text('Add Book'),
         actions: [
           TextButton.icon(
-            icon: Icon(Icons.upload_rounded, color: Colors.black87),
+            icon: Icon(Icons.upload_rounded, color: Colors.white),
             label: Text(
               'Upload',
-              style: TextStyle(color: Colors.black87),
+              style: TextStyle(color: Colors.white),
             ),
             onPressed: _uploadBook,
           ),
@@ -197,6 +179,7 @@ class _AddBookScreenState extends State<AddBookScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    SizedBox(height: 10),
                     Padding(
                       padding: const EdgeInsets.only(left: 1),
                       child: Text('Enter Book Title'),
