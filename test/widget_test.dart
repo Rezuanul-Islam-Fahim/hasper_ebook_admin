@@ -13,7 +13,7 @@ import 'package:hasper_ebook_admin/main.dart';
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(HasperEbook());
+    await tester.pumpWidget(HasperEbookAdmin());
 
     // Verify that our counter starts at 0.
     expect(find.text('0'), findsOneWidget);

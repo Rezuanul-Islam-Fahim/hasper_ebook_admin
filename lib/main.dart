@@ -10,10 +10,10 @@ import 'theme.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(HasperEbook());
+  runApp(HasperEbookAdmin());
 }
 
-class HasperEbook extends StatelessWidget {
+class HasperEbookAdmin extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
