@@ -32,7 +32,7 @@ class BookItem extends StatelessWidget {
     return InkWell(
       onTap: () => Navigator.of(context).pushNamed(
         BookDetailsScreen.routeName,
-        arguments: book!.id,
+        arguments: book,
       ),
       borderRadius: BorderRadius.circular(25),
       child: SizedBox(

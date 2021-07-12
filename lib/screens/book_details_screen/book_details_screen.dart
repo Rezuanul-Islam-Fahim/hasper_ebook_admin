@@ -11,8 +11,8 @@ class BookDetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String id = ModalRoute.of(context)!.settings.arguments as String;
     final ThemeData theme = Theme.of(context);
+    Book _book = ModalRoute.of(context)!.settings.arguments as Book;
 
     return Scaffold(
       appBar: AppBar(
@@ -25,7 +25,7 @@ class BookDetailsScreen extends StatelessWidget {
         centerTitle: true,
       ),
       body: FutureBuilder(
-        future: Provider.of<Books>(context).fetchById(id),
+        future: Provider.of<Books>(context).fetchById(_book.id!),
         builder: (BuildContext context, AsyncSnapshot snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(child: CircularProgressIndicator());
@@ -46,10 +46,7 @@ class BookDetailsScreen extends StatelessWidget {
                         style: theme.textTheme.headline5,
                       ),
                       SizedBox(height: 20),
-                      Text(
-                        book.description!,
-                        // style: theme.textTheme.bodyText1,
-                      ),
+                      Text(book.description!),
                       SizedBox(height: 80),
                     ],
                   ),
@@ -59,7 +56,7 @@ class BookDetailsScreen extends StatelessWidget {
           );
         },
       ),
-      bottomSheet: BookBottomSheet(),
+      bottomSheet: BookBottomSheet(_book.pdfUrl),
     );
   }
 }

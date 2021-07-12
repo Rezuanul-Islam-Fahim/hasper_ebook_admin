@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:hasper_ebook_admin/screens/pdf_screen.dart';
 
 class BookBottomSheet extends StatelessWidget {
-  const BookBottomSheet({
-    Key? key,
-  }) : super(key: key);
+  const BookBottomSheet(this.pdfUrl);
+
+  final String? pdfUrl;
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +32,10 @@ class BookBottomSheet extends StatelessWidget {
               style: ElevatedButton.styleFrom(
                 padding: EdgeInsets.symmetric(vertical: 15),
               ),
-              onPressed: () {},
+              onPressed: () => Navigator.of(context).pushNamed(
+                PDFScreen.routeName,
+                arguments: pdfUrl!,
+              ),
             ),
           ),
         ),

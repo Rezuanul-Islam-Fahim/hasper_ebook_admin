@@ -88,7 +88,7 @@ class SearchBookItem extends StatelessWidget {
     return InkWell(
       onTap: () => Navigator.of(context).pushNamed(
         BookDetailsScreen.routeName,
-        arguments: book!.id!,
+        arguments: book,
       ),
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),

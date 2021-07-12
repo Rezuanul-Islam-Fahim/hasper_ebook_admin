@@ -34,6 +34,7 @@ dependencies:
   infinite_scroll_pagination: ^3.1.0
   path: ^1.8.0
   provider: ^5.0.0
+  syncfusion_flutter_pdfviewer: ^19.2.46-beta
 
 dev_dependencies:
   flutter_test:
