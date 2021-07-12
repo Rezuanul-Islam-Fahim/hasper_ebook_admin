@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:hasper_ebook_admin/utils/search.dart';
 
 import '../../components/drawer.dart';
 import '../../screens/add_book_screen/add_book_screen.dart';
@@ -21,6 +22,17 @@ class HomeScreen extends StatelessWidget {
           },
         ),
         actions: [
+          IconButton(
+            icon: SvgPicture.asset(
+              'assets/icons/search.svg',
+              color: Colors.white,
+            ),
+            splashRadius: 22,
+            onPressed: () => showSearch(
+              context: context,
+              delegate: Search(),
+            ),
+          ),
           TextButton(
             child: Text(
               'Upload Book',

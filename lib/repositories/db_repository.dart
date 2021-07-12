@@ -32,16 +32,7 @@ class DBRepository {
 
     List<QueryDocumentSnapshot> _docs = _querySnapshot!.docs;
     List<Book> _recentBooks = _docs.map((QueryDocumentSnapshot doc) {
-      return Book(
-        id: doc.id,
-        title: doc.get('title'),
-        coverPhotoUrl: doc.get('coverPhotoUrl'),
-        language: doc.get('language'),
-        pdfUrl: doc.get('pdfUrl'),
-        pages: doc.get('pages'),
-        description: doc.get('description'),
-        dateTime: DateTime.parse(doc.get('dateTime')),
-      );
+      return Book.fromFirestore(doc);
     }).toList();
 
     return _recentBooks;
@@ -62,16 +53,7 @@ class DBRepository {
 
     for (int i = offset; i < _lastIndex; i++) {
       _filteredBooks.add(
-        Book(
-          id: _loadedItems[i].id,
-          title: _loadedItems[i].get('title'),
-          coverPhotoUrl: _loadedItems[i].get('coverPhotoUrl'),
-          language: _loadedItems[i].get('language'),
-          pdfUrl: _loadedItems[i].get('pdfUrl'),
-          pages: _loadedItems[i].get('pages'),
-          description: _loadedItems[i].get('description'),
-          dateTime: DateTime.parse(_loadedItems[i].get('dateTime')),
-        ),
+        Book.fromFirestore(_loadedItems[i]),
       );
     }
 
@@ -83,15 +65,23 @@ class DBRepository {
     DocumentReference _reference = _fireStore.collection('books').doc(id);
     DocumentSnapshot _snapshot = await _reference.get();
 
-    return Book(
-      id: _reference.id,
-      title: _snapshot.get('title'),
-      coverPhotoUrl: _snapshot.get('coverPhotoUrl'),
-      pdfUrl: _snapshot.get('pdfUrl'),
-      language: _snapshot.get('language'),
-      pages: _snapshot.get('pages'),
-      description: _snapshot.get('description'),
-      dateTime: DateTime.parse(_snapshot.get('dateTime')),
-    );
+    return Book.fromFirestore(_snapshot);
+  }
+
+  static Future<List<Book>?>? searchBooksByKeyword(String? keyword) async {
+    FirebaseFirestore _fireStore = FirebaseFirestore.instance;
+    QuerySnapshot<Map<String, dynamic>> _querySnapshot =
+        await _fireStore.collection('books').get();
+    List<QueryDocumentSnapshot> _documentSnapshot = _querySnapshot.docs;
+    List<Book> _loadedBooks =
+        _documentSnapshot.map((QueryDocumentSnapshot snapshot) {
+      return Book.fromFirestore(snapshot);
+    }).toList();
+
+    return keyword!.isNotEmpty
+        ? _loadedBooks
+            .where((Book book) => book.title!.toLowerCase().contains(keyword))
+            .toList()
+        : [];
   }
 }

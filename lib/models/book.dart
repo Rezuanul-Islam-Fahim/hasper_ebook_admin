@@ -34,6 +34,19 @@ class Book {
     );
   }
 
+  factory Book.fromFirestore(dynamic book) {
+    return Book(
+      id: book.id,
+      title: book.get('title'),
+      coverPhotoUrl: book.get('coverPhotoUrl'),
+      language: book.get('language'),
+      pdfUrl: book.get('pdfUrl'),
+      pages: book.get('pages'),
+      description: book.get('description'),
+      dateTime: DateTime.parse(book.get('dateTime')),
+    );
+  }
+
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'title': title,

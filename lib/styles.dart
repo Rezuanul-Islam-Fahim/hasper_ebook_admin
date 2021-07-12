@@ -14,3 +14,11 @@ TextStyle dataPanelTitle() {
 TextStyle dataPanelValue() {
   return TextStyle(color: Colors.white60, fontSize: 12);
 }
+
+TextStyle searchBookItem() {
+  return TextStyle(
+    fontSize: 15,
+    color: Colors.black87,
+    fontWeight: FontWeight.bold,
+  );
+}
