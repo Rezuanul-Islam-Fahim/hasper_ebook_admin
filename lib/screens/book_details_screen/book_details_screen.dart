@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hasper_ebook_admin/models/book.dart';
 import 'package:hasper_ebook_admin/providers/books_provider.dart';
+import 'package:hasper_ebook_admin/styles.dart';
 import 'package:provider/provider.dart';
 
 import 'components/book_details_header.dart';
@@ -16,7 +17,7 @@ class BookDetailsScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Book Details'),
+        title: Text('Book Details', style: appBarTitle()),
         leading: IconButton(
           icon: Icon(Icons.arrow_back_rounded, color: Colors.white),
           onPressed: () => Navigator.of(context).pop(),
@@ -45,8 +46,8 @@ class BookDetailsScreen extends StatelessWidget {
                         'Description',
                         style: theme.textTheme.headline5,
                       ),
-                      SizedBox(height: 20),
-                      Text(book.description!),
+                      SizedBox(height: 15),
+                      Text(book.description!, style: bookDescription()),
                       SizedBox(height: 80),
                     ],
                   ),

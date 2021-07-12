@@ -6,6 +6,7 @@ import 'package:hasper_ebook_admin/models/book.dart';
 import 'package:hasper_ebook_admin/providers/books_provider.dart';
 import 'package:hasper_ebook_admin/repositories/db_repository.dart';
 import 'package:hasper_ebook_admin/repositories/upload_file_repository.dart';
+import 'package:hasper_ebook_admin/styles.dart';
 import 'package:hasper_ebook_admin/utils/connectivity.dart';
 import 'package:path/path.dart' as path;
 import 'package:provider/provider.dart';
@@ -157,13 +158,13 @@ class _AddBookScreenState extends State<AddBookScreen> {
           splashRadius: 22,
           onPressed: () => Navigator.of(context).pop(),
         ),
-        title: Text('Add Book'),
+        title: Text('Add Book', style: appBarTitle()),
         actions: [
           TextButton.icon(
             icon: Icon(Icons.upload_rounded, color: Colors.white),
             label: Text(
               'Upload',
-              style: TextStyle(color: Colors.white),
+              style: actionButtonText(),
             ),
             onPressed: _uploadBook,
           ),
@@ -179,7 +180,6 @@ class _AddBookScreenState extends State<AddBookScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(height: 10),
                     Padding(
                       padding: const EdgeInsets.only(left: 1),
                       child: Text('Enter Book Title'),

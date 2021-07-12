@@ -54,7 +54,7 @@ class _AllBookScreenBodyState extends State<AllBookScreenBody> {
       pagingController: _pagingController,
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
-        crossAxisSpacing: 15,
+        crossAxisSpacing: 10,
         mainAxisSpacing: 10,
         mainAxisExtent: 240,
       ),

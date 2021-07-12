@@ -13,9 +13,8 @@ ThemeData theme() {
             fontSize: 18,
             fontWeight: FontWeight.bold,
           ),
-          headline6: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
           bodyText1: TextStyle(
-            fontSize: 15,
+            fontSize: 14,
             fontWeight: FontWeight.bold,
           ),
         ),

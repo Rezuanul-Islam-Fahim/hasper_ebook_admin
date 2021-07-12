@@ -42,10 +42,14 @@ class _SelectCoverPhotoState extends State<SelectCoverPhoto> {
               width: 110,
               height: 140,
               decoration: BoxDecoration(
-                border: Border.all(color: Colors.grey[400]!),
+                border: Border.all(color: Colors.grey[300]!),
+                borderRadius: BorderRadius.circular(5),
               ),
               child: _imageFile != null
-                  ? Image.file(_imageFile!, fit: BoxFit.cover)
+                  ? ClipRRect(
+                      borderRadius: BorderRadius.circular(5),
+                      child: Image.file(_imageFile!, fit: BoxFit.cover),
+                    )
                   : Center(
                       child: Padding(
                         padding: const EdgeInsets.all(5),

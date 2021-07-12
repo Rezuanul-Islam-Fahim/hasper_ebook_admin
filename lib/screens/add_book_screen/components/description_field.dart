@@ -21,15 +21,15 @@ class DescriptionField extends StatelessWidget {
             hintStyle: TextStyle(fontSize: 14),
             contentPadding: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
             border: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.grey[400]!),
+              borderSide: BorderSide(color: Colors.grey[300]!),
               borderRadius: BorderRadius.circular(6),
             ),
             enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.grey[400]!),
+              borderSide: BorderSide(color: Colors.grey[300]!),
               borderRadius: BorderRadius.circular(6),
             ),
             focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.grey[400]!),
+              borderSide: BorderSide(color: Colors.grey[300]!),
               borderRadius: BorderRadius.circular(6),
             ),
           ),

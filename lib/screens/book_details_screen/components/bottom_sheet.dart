@@ -10,15 +10,15 @@ class BookBottomSheet extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      height: 80,
+      height: 70,
       decoration: BoxDecoration(
         color: Colors.white,
         boxShadow: [
           BoxShadow(
-            color: Colors.grey[300]!,
+            color: Colors.grey[200]!,
             offset: Offset(0, -1),
-            spreadRadius: 2,
-            blurRadius: 4,
+            spreadRadius: 1,
+            blurRadius: 3,
           ),
         ],
       ),
@@ -28,9 +28,15 @@ class BookBottomSheet extends StatelessWidget {
           child: SizedBox(
             width: double.infinity,
             child: ElevatedButton(
-              child: Text('Start Reading'),
+              child: Text(
+                'Start Reading',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 15,
+                ),
+              ),
               style: ElevatedButton.styleFrom(
-                padding: EdgeInsets.symmetric(vertical: 15),
+                padding: EdgeInsets.symmetric(vertical: 13),
               ),
               onPressed: () => Navigator.of(context).pushNamed(
                 PDFScreen.routeName,

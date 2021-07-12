@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:hasper_ebook_admin/styles.dart';
 import 'package:hasper_ebook_admin/utils/search.dart';
 
 import '../../components/drawer.dart';
@@ -38,7 +39,7 @@ class HomeScreen extends StatelessWidget {
           TextButton(
             child: Text(
               'Upload Book',
-              style: TextStyle(color: Colors.white, fontSize: 16),
+              style: actionButtonText(),
             ),
             onPressed: () => Navigator.of(context).pushNamed(
               AddBookScreen.routeName,

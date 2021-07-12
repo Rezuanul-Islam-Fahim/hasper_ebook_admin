@@ -38,7 +38,7 @@ class HomeScreenBodyState extends State<HomeScreenBody> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(height: 25),
+                SizedBox(height: 20),
                 Padding(
                   padding: EdgeInsets.only(left: 20),
                   child: Text(
@@ -46,7 +46,7 @@ class HomeScreenBodyState extends State<HomeScreenBody> {
                     style: Theme.of(context).textTheme.headline5,
                   ),
                 ),
-                SizedBox(height: 20),
+                SizedBox(height: 15),
                 RecentBooks(),
                 SizedBox(height: 25),
                 Row(

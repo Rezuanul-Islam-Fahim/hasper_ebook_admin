@@ -66,6 +66,10 @@ class Search extends SearchDelegate {
                   query.isEmpty
                       ? 'Search For Specific Books'
                       : 'No results found for this entry',
+                  style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               );
       },
@@ -74,7 +78,12 @@ class Search extends SearchDelegate {
 
   @override
   Widget buildSuggestions(BuildContext context) {
-    return Center(child: Text('Search For Specific Books'));
+    return Center(
+      child: Text(
+        'Search For Specific Books',
+        style: Theme.of(context).textTheme.bodyText1,
+      ),
+    );
   }
 }
 

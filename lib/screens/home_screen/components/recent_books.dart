@@ -10,7 +10,7 @@ class RecentBooks extends StatelessWidget {
     final List<Book?>? _recentBooks = Provider.of<Books>(context).recentBooks;
 
     return Container(
-      height: 230,
+      height: 220,
       child: ListView(
         padding: const EdgeInsets.symmetric(horizontal: 15),
         scrollDirection: Axis.horizontal,
@@ -34,7 +34,7 @@ class BookItem extends StatelessWidget {
         BookDetailsScreen.routeName,
         arguments: book,
       ),
-      borderRadius: BorderRadius.circular(25),
+      borderRadius: BorderRadius.circular(15),
       child: SizedBox(
         width: 150,
         child: Padding(
@@ -43,10 +43,10 @@ class BookItem extends StatelessWidget {
             children: [
               Container(
                 width: 140,
-                height: 165,
+                height: 160,
                 decoration: BoxDecoration(
                   color: Color(0xFFd8e0e7),
-                  borderRadius: BorderRadius.circular(25),
+                  borderRadius: BorderRadius.circular(15),
                 ),
                 child: Align(
                   alignment: Alignment.center,
@@ -74,12 +74,12 @@ class BookItem extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: 12),
+              SizedBox(height: 10),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 3),
                 child: Text(
                   book!.title!,
-                  style: Theme.of(context).textTheme.headline6!,
+                  style: Theme.of(context).textTheme.bodyText1!,
                   overflow: TextOverflow.ellipsis,
                   textAlign: TextAlign.center,
                   maxLines: 2,

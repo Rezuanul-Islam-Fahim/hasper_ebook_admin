@@ -13,11 +13,11 @@ class Library extends StatelessWidget {
       shrinkWrap: true,
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
-        crossAxisSpacing: 15,
+        crossAxisSpacing: 10,
         mainAxisSpacing: 10,
         mainAxisExtent: 240,
       ),
-      padding: EdgeInsets.fromLTRB(15, 5, 15, 15),
+      padding: EdgeInsets.fromLTRB(15, 0, 15, 15),
       physics: NeverScrollableScrollPhysics(),
       children: _libraryBooks!.map((Book? book) {
         return DefaultBookItem(book);

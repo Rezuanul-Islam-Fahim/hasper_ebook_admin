@@ -14,7 +14,7 @@ class DefaultBookItem extends StatelessWidget {
         BookDetailsScreen.routeName,
         arguments: book,
       ),
-      borderRadius: BorderRadius.circular(25),
+      borderRadius: BorderRadius.circular(15),
       child: Column(
         children: [
           Container(
@@ -22,12 +22,12 @@ class DefaultBookItem extends StatelessWidget {
             height: 180,
             decoration: BoxDecoration(
               color: Color(0xFFd8e0e7),
-              borderRadius: BorderRadius.circular(25),
+              borderRadius: BorderRadius.circular(15),
             ),
             child: Align(
               alignment: Alignment.center,
               child: Container(
-                width: 110,
+                width: 105,
                 height: 145,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
@@ -55,7 +55,7 @@ class DefaultBookItem extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 3),
             child: Text(
               book!.title!,
-              style: Theme.of(context).textTheme.headline6!,
+              style: Theme.of(context).textTheme.bodyText1!,
               overflow: TextOverflow.ellipsis,
               textAlign: TextAlign.center,
               maxLines: 2,
