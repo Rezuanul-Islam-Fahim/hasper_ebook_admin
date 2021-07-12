@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:hasper_ebook_admin/components/drawer.dart';
 import 'package:hasper_ebook_admin/screens/all_book_screen/components/body.dart';
 import 'package:hasper_ebook_admin/utils/search.dart';
 
@@ -10,6 +11,16 @@ class AllBookScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: Builder(
+          builder: (BuildContext context) {
+            return IconButton(
+              icon: SvgPicture.asset('assets/icons/menu.svg',
+                  color: Colors.white),
+              splashRadius: 22,
+              onPressed: () => Scaffold.of(context).openDrawer(),
+            );
+          },
+        ),
         centerTitle: true,
         title: Text('All Books'),
         actions: [
@@ -26,6 +37,7 @@ class AllBookScreen extends StatelessWidget {
           ),
         ],
       ),
+      drawer: MainDrawer(),
       body: AllBookScreenBody(),
     );
   }
