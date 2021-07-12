@@ -41,6 +41,7 @@ class BookItem extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 5),
           child: Column(
             children: [
+              SizedBox(height: 5),
               Container(
                 width: 140,
                 height: 160,
