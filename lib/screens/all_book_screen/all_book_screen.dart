@@ -21,6 +21,7 @@ class AllBookScreen extends StatelessWidget {
             );
           },
         ),
+        automaticallyImplyLeading: false,
         centerTitle: true,
         title: Text('All Books'),
         actions: [
