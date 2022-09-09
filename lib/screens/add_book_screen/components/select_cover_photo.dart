@@ -19,7 +19,7 @@ class _SelectCoverPhotoState extends State<SelectCoverPhoto> {
   File? _imageFile;
 
   Future<void> _selectImage() async {
-    PickedFile? _pickedImage = await ImagePicker().getImage(
+    XFile? _pickedImage = await ImagePicker().pickImage(
       source: ImageSource.gallery,
     );
 
