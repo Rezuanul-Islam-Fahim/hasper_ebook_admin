@@ -15,7 +15,9 @@ Built with ❤️ using Dart & Flutter
 
 ### 🎯 [CI/CD Documentation](.github/ARCHITECTURE.md)
 
-<a href="https://drive.google.com/file/d/1xCjRPtjH6vs7HpmHEdM8bGZtLtmDh1vp/view?usp=sharing"><img src="https://boostapk.com/wp-content/uploads/2020/08/fall-guys-android.png" width=200></a>
+### 🌐 [Live Preview on Appetize](https://appetize.io/app/qqkmw4er34ynubm4bcgiw54blm)
+
+Try the app instantly in your browser - no installation required!
 
 [![GitHub stars](https://img.shields.io/github/stars/rezuanul-islam-fahim/hasper_ebook_admin?style=social)](https://github.com/Rezuanul-Islam-Fahim/hasper_ebook_admin/stargazers)
 [![GitHub forks](https://img.shields.io/github/forks/rezuanul-islam-fahim/hasper_ebook_admin?style=social)](https://github.com/Rezuanul-Islam-Fahim/hasper_ebook_admin/network/members)
