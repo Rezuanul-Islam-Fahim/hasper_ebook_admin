@@ -2,10 +2,10 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 
 class NetworkStatus {
   static Future<void> checkStatus() async {
-    ConnectivityResult connectivityResult =
+    List<ConnectivityResult> connectivityResults =
         await Connectivity().checkConnectivity();
 
-    if (connectivityResult == ConnectivityResult.none) {
+    if (connectivityResults.contains(ConnectivityResult.none)) {
       throw ConnectivityException();
     }
   }

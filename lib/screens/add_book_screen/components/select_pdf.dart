@@ -7,29 +7,29 @@ import 'package:hasper_ebook_admin/styles.dart';
 import 'package:path/path.dart' as path;
 
 class SelectPdf extends StatefulWidget {
-  const SelectPdf({this.handler, this.isPdfSelected});
+  const SelectPdf({super.key, this.handler, this.isPdfSelected});
 
   final Function? handler;
   final bool? isPdfSelected;
 
   @override
-  _SelectPdfState createState() => _SelectPdfState();
+  SelectPdfState createState() => SelectPdfState();
 }
 
-class _SelectPdfState extends State<SelectPdf> {
+class SelectPdfState extends State<SelectPdf> {
   String? imageName;
 
   Future<void> _selectPdf() async {
-    FilePickerResult? _pickedFile = await FilePicker.platform.pickFiles(
+    FilePickerResult? pickedFile = await FilePicker.platform.pickFiles(
       type: FileType.custom,
       allowedExtensions: ['pdf'],
     );
 
-    if (_pickedFile != null) {
-      File _file = File(_pickedFile.files.single.path!);
-      widget.handler!(_file);
+    if (pickedFile != null) {
+      File file = File(pickedFile.files.single.path!);
+      widget.handler!(file);
       setState(() {
-        imageName = path.basename(_file.path);
+        imageName = path.basename(file.path);
       });
     }
   }
@@ -42,8 +42,8 @@ class _SelectPdfState extends State<SelectPdf> {
         Row(
           children: [
             ElevatedButton(
-              child: Text('Select PDF'),
               onPressed: _selectPdf,
+              child: Text('Select PDF'),
             ),
             SizedBox(width: 20),
             Expanded(

@@ -8,20 +8,20 @@ class UploadFileRepository {
     File? file,
     String? fileExtension,
   }) async {
-    final String? _rawFolder = fileType == 'pdf' ? 'pdfs' : 'coverImages';
-    final String? _filePrefix = fileType == 'pdf' ? 'pdf' : 'image';
-    final DateTime _datentime = DateTime.now();
-    final FirebaseStorage _storage = FirebaseStorage.instance;
+    final String rawFolder = fileType == 'pdf' ? 'pdfs' : 'coverImages';
+    final String filePrefix = fileType == 'pdf' ? 'pdf' : 'image';
+    final DateTime datentime = DateTime.now();
+    final FirebaseStorage storage = FirebaseStorage.instance;
 
-    TaskSnapshot _uploadTaskSnapshot = await _storage
-        .ref('$_rawFolder')
+    TaskSnapshot uploadTaskSnapshot = await storage
+        .ref(rawFolder)
         .child(
-          '${_filePrefix}_${_datentime.millisecondsSinceEpoch}$fileExtension',
+          '${filePrefix}_${datentime.millisecondsSinceEpoch}$fileExtension',
         )
         .putFile(file!);
 
-    String _fileURL = await _uploadTaskSnapshot.ref.getDownloadURL();
+    String fileURL = await uploadTaskSnapshot.ref.getDownloadURL();
 
-    return _fileURL;
+    return fileURL;
   }
 }

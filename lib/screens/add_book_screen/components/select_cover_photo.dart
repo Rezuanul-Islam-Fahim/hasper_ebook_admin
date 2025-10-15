@@ -6,26 +6,26 @@ import 'package:hasper_ebook_admin/styles.dart';
 import 'package:image_picker/image_picker.dart';
 
 class SelectCoverPhoto extends StatefulWidget {
-  const SelectCoverPhoto({this.handler, this.isImageSelected});
+  const SelectCoverPhoto({super.key, this.handler, this.isImageSelected});
 
   final Function? handler;
   final bool? isImageSelected;
 
   @override
-  _SelectCoverPhotoState createState() => _SelectCoverPhotoState();
+  SelectCoverPhotoState createState() => SelectCoverPhotoState();
 }
 
-class _SelectCoverPhotoState extends State<SelectCoverPhoto> {
+class SelectCoverPhotoState extends State<SelectCoverPhoto> {
   File? _imageFile;
 
   Future<void> _selectImage() async {
-    XFile? _pickedImage = await ImagePicker().pickImage(
+    XFile? pickedImage = await ImagePicker().pickImage(
       source: ImageSource.gallery,
     );
 
-    if (_pickedImage != null) {
+    if (pickedImage != null) {
       setState(() {
-        _imageFile = File(_pickedImage.path);
+        _imageFile = File(pickedImage.path);
       });
       widget.handler!(_imageFile);
     }

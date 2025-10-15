@@ -10,6 +10,8 @@ import 'components/body.dart';
 class HomeScreen extends StatelessWidget {
   static const String routeName = '/home';
 
+  const HomeScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,7 +20,7 @@ class HomeScreen extends StatelessWidget {
           builder: (BuildContext context) {
             return IconButton(
               icon: SvgPicture.asset('assets/icons/menu.svg',
-                  color: Colors.white),
+                  colorFilter: ColorFilter.mode(Colors.white, BlendMode.srcIn)),
               splashRadius: 22,
               onPressed: () => Scaffold.of(context).openDrawer(),
             );
@@ -28,7 +30,7 @@ class HomeScreen extends StatelessWidget {
           IconButton(
             icon: SvgPicture.asset(
               'assets/icons/search.svg',
-              color: Colors.white,
+              colorFilter: ColorFilter.mode(Colors.white, BlendMode.srcIn),
             ),
             splashRadius: 22,
             onPressed: () => showSearch(

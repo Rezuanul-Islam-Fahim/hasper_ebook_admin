@@ -8,6 +8,8 @@ import 'package:hasper_ebook_admin/utils/search.dart';
 class AllBookScreen extends StatelessWidget {
   static const String routeName = '/all-book';
 
+  const AllBookScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,7 +19,7 @@ class AllBookScreen extends StatelessWidget {
             return IconButton(
               icon: SvgPicture.asset(
                 'assets/icons/menu.svg',
-                color: Colors.white,
+                colorFilter: ColorFilter.mode(Colors.white, BlendMode.srcIn),
               ),
               splashRadius: 22,
               onPressed: () => Scaffold.of(context).openDrawer(),
@@ -30,7 +32,7 @@ class AllBookScreen extends StatelessWidget {
           IconButton(
             icon: SvgPicture.asset(
               'assets/icons/search.svg',
-              color: Colors.white,
+              colorFilter: ColorFilter.mode(Colors.white, BlendMode.srcIn),
             ),
             splashRadius: 22,
             onPressed: () => showSearch(
