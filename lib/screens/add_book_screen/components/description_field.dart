@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class DescriptionField extends StatelessWidget {
-  const DescriptionField(this.handler);
+  const DescriptionField(this.handler, {super.key});
 
   final Function? handler;
 

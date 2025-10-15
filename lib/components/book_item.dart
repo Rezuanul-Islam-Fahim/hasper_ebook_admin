@@ -3,7 +3,7 @@ import 'package:hasper_ebook_admin/models/book.dart';
 import 'package:hasper_ebook_admin/screens/book_details_screen/book_details_screen.dart';
 
 class DefaultBookItem extends StatelessWidget {
-  const DefaultBookItem(this.book);
+  const DefaultBookItem(this.book, {super.key});
 
   final Book? book;
 

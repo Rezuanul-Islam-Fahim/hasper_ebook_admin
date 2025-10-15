@@ -19,11 +19,13 @@ import 'components/select_pdf.dart';
 class AddBookScreen extends StatefulWidget {
   static const String routeName = '/add-book';
 
+  const AddBookScreen({super.key});
+
   @override
-  _AddBookScreenState createState() => _AddBookScreenState();
+  AddBookScreenState createState() => AddBookScreenState();
 }
 
-class _AddBookScreenState extends State<AddBookScreen> {
+class AddBookScreenState extends State<AddBookScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   File? _selectedPdf;
   File? _selectedImage;
@@ -100,6 +102,8 @@ class _AddBookScreenState extends State<AddBookScreen> {
           dateTime: book!.dateTime,
         );
 
+        if (!mounted) return;
+
         Provider.of<Books>(context, listen: false).addBookRecent(book!);
         Provider.of<Books>(context, listen: false).addBookLibrary(book!);
 
@@ -113,11 +117,15 @@ class _AddBookScreenState extends State<AddBookScreen> {
           defaultSnackbar('Successfully Uploaded New Book')!,
         );
       } on ConnectivityException catch (_) {
+        if (!mounted) return;
+
         ScaffoldMessenger.of(context).hideCurrentSnackBar();
         ScaffoldMessenger.of(context).showSnackBar(
           defaultSnackbar('No Internet Connection Available')!,
         );
       } catch (_) {
+        if (!mounted) return;
+
         ScaffoldMessenger.of(context).hideCurrentSnackBar();
         ScaffoldMessenger.of(context).showSnackBar(
           defaultSnackbar('An Error Occurred')!,
@@ -128,12 +136,12 @@ class _AddBookScreenState extends State<AddBookScreen> {
 
   void _getPdf(File pdf) {
     _selectedPdf = pdf;
-    print(_selectedPdf!.path);
+    debugPrint(_selectedPdf!.path);
   }
 
   void _getCoverPhoto(File image) {
     _selectedImage = image;
-    print(_selectedImage!.path);
+    debugPrint(_selectedImage!.path);
   }
 
   void _getDescription(String? value) {

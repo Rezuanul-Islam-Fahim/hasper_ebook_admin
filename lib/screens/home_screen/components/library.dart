@@ -5,9 +5,11 @@ import 'package:hasper_ebook_admin/providers/books_provider.dart';
 import 'package:provider/provider.dart';
 
 class Library extends StatelessWidget {
+  const Library({super.key});
+
   @override
   Widget build(BuildContext context) {
-    List<Book?>? _libraryBooks = Provider.of<Books>(context).libraryBooks;
+    List<Book?>? libraryBooks = Provider.of<Books>(context).libraryBooks;
 
     return GridView(
       shrinkWrap: true,
@@ -19,7 +21,7 @@ class Library extends StatelessWidget {
       ),
       padding: EdgeInsets.fromLTRB(15, 0, 15, 15),
       physics: NeverScrollableScrollPhysics(),
-      children: _libraryBooks!.map((Book? book) {
+      children: libraryBooks!.map((Book? book) {
         return DefaultBookItem(book);
       }).toList(),
     );

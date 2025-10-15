@@ -4,6 +4,8 @@ import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 class PDFScreen extends StatelessWidget {
   static const String routeName = '/pdf';
 
+  const PDFScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     String? pdfUrl = ModalRoute.of(context)!.settings.arguments as String;

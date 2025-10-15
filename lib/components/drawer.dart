@@ -3,6 +3,8 @@ import 'package:hasper_ebook_admin/screens/all_book_screen/all_book_screen.dart'
 import 'package:hasper_ebook_admin/screens/home_screen/home_screen.dart';
 
 class MainDrawer extends StatelessWidget {
+  const MainDrawer({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Drawer(

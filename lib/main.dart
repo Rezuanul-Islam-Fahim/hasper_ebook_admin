@@ -14,6 +14,8 @@ Future<void> main() async {
 }
 
 class HasperEbookAdmin extends StatelessWidget {
+  const HasperEbookAdmin({super.key});
+
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(

@@ -10,10 +10,12 @@ import 'components/bottom_sheet.dart';
 class BookDetailsScreen extends StatelessWidget {
   static const String routeName = '/book-details';
 
+  const BookDetailsScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
-    Book _book = ModalRoute.of(context)!.settings.arguments as Book;
+    Book book0 = ModalRoute.of(context)!.settings.arguments as Book;
 
     return Scaffold(
       appBar: AppBar(
@@ -26,7 +28,7 @@ class BookDetailsScreen extends StatelessWidget {
         centerTitle: true,
       ),
       body: FutureBuilder(
-        future: Provider.of<Books>(context).fetchById(_book.id!),
+        future: Provider.of<Books>(context).fetchById(book0.id!),
         builder: (BuildContext context, AsyncSnapshot snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(child: CircularProgressIndicator());
@@ -57,7 +59,7 @@ class BookDetailsScreen extends StatelessWidget {
           );
         },
       ),
-      bottomSheet: BookBottomSheet(_book.pdfUrl),
+      bottomSheet: BookBottomSheet(book0.pdfUrl),
     );
   }
 }

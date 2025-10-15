@@ -5,16 +5,18 @@ import 'package:hasper_ebook_admin/screens/book_details_screen/book_details_scre
 import 'package:provider/provider.dart';
 
 class RecentBooks extends StatelessWidget {
+  const RecentBooks({super.key});
+
   @override
   Widget build(BuildContext context) {
-    final List<Book?>? _recentBooks = Provider.of<Books>(context).recentBooks;
+    final List<Book?>? recentBooks = Provider.of<Books>(context).recentBooks;
 
-    return Container(
+    return SizedBox(
       height: 220,
       child: ListView(
         padding: const EdgeInsets.symmetric(horizontal: 15),
         scrollDirection: Axis.horizontal,
-        children: _recentBooks!.map((Book? book) {
+        children: recentBooks!.map((Book? book) {
           return BookItem(book);
         }).toList(),
       ),
@@ -23,7 +25,7 @@ class RecentBooks extends StatelessWidget {
 }
 
 class BookItem extends StatelessWidget {
-  const BookItem(this.book);
+  const BookItem(this.book, {super.key});
 
   final Book? book;
 

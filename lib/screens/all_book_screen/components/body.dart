@@ -5,11 +5,13 @@ import 'package:hasper_ebook_admin/repositories/db_repository.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 
 class AllBookScreenBody extends StatefulWidget {
+  const AllBookScreenBody({super.key});
+
   @override
-  _AllBookScreenBodyState createState() => _AllBookScreenBodyState();
+  AllBookScreenBodyState createState() => AllBookScreenBodyState();
 }
 
-class _AllBookScreenBodyState extends State<AllBookScreenBody> {
+class AllBookScreenBodyState extends State<AllBookScreenBody> {
   final int _pageSize = 20;
   final PagingController<int, Book> _pagingController = PagingController(
     firstPageKey: 0,
@@ -17,17 +19,17 @@ class _AllBookScreenBodyState extends State<AllBookScreenBody> {
 
   Future<void>? fetchItems(int pageKey) async {
     try {
-      List<Book> _loadedBooks = await DBRepository.fetchBooksFromRange(
+      List<Book> loadedBooks = await DBRepository.fetchBooksFromRange(
         offset: pageKey,
         limit: _pageSize,
       );
-      bool _isLastPage = _loadedBooks.length < _pageSize;
+      bool isLastPage = loadedBooks.length < _pageSize;
 
-      if (_isLastPage) {
-        _pagingController.appendLastPage(_loadedBooks);
+      if (isLastPage) {
+        _pagingController.appendLastPage(loadedBooks);
       } else {
-        final int _newPageKey = pageKey + _pageSize;
-        _pagingController.appendPage(_loadedBooks, _newPageKey);
+        final int newPageKey = pageKey + _pageSize;
+        _pagingController.appendPage(loadedBooks, newPageKey);
       }
     } catch (error) {
       _pagingController.error = error;

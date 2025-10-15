@@ -8,6 +8,8 @@ import 'package:hasper_ebook_admin/utils/search.dart';
 class AllBookScreen extends StatelessWidget {
   static const String routeName = '/all-book';
 
+  const AllBookScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

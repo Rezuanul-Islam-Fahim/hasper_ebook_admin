@@ -29,18 +29,18 @@ class Books with ChangeNotifier {
   }
 
   Future<void> loadRecentBooks() async {
-    List<Book>? _loadedBooks = await DBRepository.fetchBooks(
+    List<Book>? loadedBooks = await DBRepository.fetchBooks(
       orderBy: 'dateTime',
       desc: true,
       limit: 6,
     );
-    _recentBooks = _loadedBooks;
+    _recentBooks = loadedBooks;
     notifyListeners();
   }
 
   Future<void> loadLibraryBooks() async {
-    List<Book>? _loadedBooks = await DBRepository.fetchBooks(limit: 10);
-    _libraryBooks = _loadedBooks;
+    List<Book>? loadedBooks = await DBRepository.fetchBooks(limit: 10);
+    _libraryBooks = loadedBooks;
     notifyListeners();
   }
 

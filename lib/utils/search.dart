@@ -89,7 +89,7 @@ class Search extends SearchDelegate {
 }
 
 class SearchBookItem extends StatelessWidget {
-  const SearchBookItem(this.book);
+  const SearchBookItem(this.book, {super.key});
 
   final Book? book;
 

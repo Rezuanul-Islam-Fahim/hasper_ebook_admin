@@ -7,6 +7,8 @@ import 'package:provider/provider.dart';
 import 'library.dart';
 
 class HomeScreenBody extends StatefulWidget {
+  const HomeScreenBody({super.key});
+
   @override
   HomeScreenBodyState createState() => HomeScreenBodyState();
 }
@@ -17,7 +19,9 @@ class HomeScreenBodyState extends State<HomeScreenBody> {
 
   Future<void> loadBooks() async {
     await Provider.of<Books>(context, listen: false).loadRecentBooks();
+    if (!mounted) return;
     await Provider.of<Books>(context, listen: false).loadLibraryBooks();
+    if (!mounted) return;
     setState(() => _isLoading = false);
   }
 
