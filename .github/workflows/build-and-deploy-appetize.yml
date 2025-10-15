@@ -120,7 +120,7 @@ jobs:
             --out=lib/firebase_options.dart \
             --android-package-name=com.rezuanulfahim.hasper_ebook_admin \
             --ios-bundle-id=com.rezuanulfahim.hasperEbookAdmin \
-            --web-app-id=1:121073413143:web:d75df76388ad878e2f8052 \
+            --web-app-id=1:121073413143:web:0db01237282bc5712f8052 \
             --token="$FIREBASE_TOKEN"
 
           echo "✅ Firebase configured successfully for all platforms"
