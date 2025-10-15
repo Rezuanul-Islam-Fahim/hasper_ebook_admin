@@ -301,7 +301,7 @@ class _AddBookScreenState extends State<AddBookScreen> {
                     SizedBox(height: 10),
                     Text(
                       'Uploading New Book...',
-                      style: Theme.of(context).textTheme.bodyText1,
+                      style: Theme.of(context).textTheme.bodyLarge,
                     ),
                   ],
                 ),
