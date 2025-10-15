@@ -4,7 +4,6 @@ on:
   pull_request:
     branches:
       - master
-      - main
   workflow_dispatch:
 
 env:
@@ -121,7 +120,7 @@ jobs:
             --out=lib/firebase_options.dart \
             --android-package-name=com.rezuanulfahim.hasper_ebook_admin \
             --ios-bundle-id=com.rezuanulfahim.hasperEbookAdmin \
-            --web-app-id=1:121073413143:web:admin123456789abc \
+            --web-app-id=1:121073413143:web:d75df76388ad878e2f8052 \
             --token="$FIREBASE_TOKEN"
 
           echo "✅ Firebase configured successfully for all platforms"
